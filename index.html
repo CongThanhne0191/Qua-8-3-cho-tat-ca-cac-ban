@@ -3,12 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Quà 8/3</title>
-
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 <style>
 
 body{
 margin:0;
-font-family: "Segoe UI", sans-serif;
+font-family: "Quicksand", sans-serif;
+h1,h2{
+font-family: 'Dancing Script', cursive;
+}
 background: linear-gradient(180deg,#ffd6e7,#fff);
 overflow:hidden;
 text-align:center;
@@ -58,12 +61,13 @@ cursor:pointer;
 /* thư */
 .letter{
 background:white;
-padding:30px;
-width:60%;
-max-width:500px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,0.2);
-animation: fade 1s;
+padding:40px;
+width:75%;
+max-width:700px;
+border-radius:25px;
+font-size:20px;
+line-height:1.7;
+box-shadow:0 15px 40px rgba(0,0,0,0.2);
 }
 
 @keyframes fade{
@@ -108,8 +112,7 @@ animation: fly 10s linear infinite;
 <div id="screen3" class="screen hidden">
 <div class="letter">
 <h2>💌 Chúc mừng 8/3</h2>
-<p>
-Hí lu, dù không biết bạn là ai nhưng chúc bạn có một ngày 8/3 thật ý nghĩa và tràn đầy yêu thương. Mong bạn sẽ luôn xinh đẹp, dễ thương, rực rỡ như ánh mặt trời và luôn tươi tắn như những bó hoa, luôn gặp nhiều niềm vui và may mắn trong tương lai nhéee.
+<p id="text"></p>
 </p>
 <p>🌷 Happy Women's Day 🌷</p>
 </div>
@@ -117,6 +120,17 @@ Hí lu, dù không biết bạn là ai nhưng chúc bạn có một ngày 8/3 th
 
 <script>
 
+const message = "Hí lu, dù không biết bạn là ai nhưng chúc bạn có một ngày 8/3 thật ý nghĩa và tràn đầy yêu thương. Mong bạn sẽ luôn xinh đẹp, dễ thương, rực rỡ như ánh mặt trời và luôn tươi tắn như những bó hoa, luôn gặp nhiều niềm vui và may mắn trong tương lai nhéee.";
+
+let i = 0;
+
+function typeLetter(){
+if(i < message.length){
+document.getElementById("text").innerHTML += message.charAt(i);
+i++;
+setTimeout(typeLetter,40);
+}
+}
 function next1(){
 document.getElementById("screen1").classList.add("hidden");
 document.getElementById("screen2").classList.remove("hidden");
@@ -126,6 +140,8 @@ document.getElementById("music").play();
 function next2(){
 document.getElementById("screen2").classList.add("hidden");
 document.getElementById("screen3").classList.remove("hidden");
+
+typeLetter();
 }
 
 /* tạo bóng bay */
