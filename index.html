@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Quà 8/3</title>
+
+<style>
+
+body{
+margin:0;
+font-family: "Segoe UI", sans-serif;
+background: linear-gradient(180deg,#ffd6e7,#fff);
+overflow:hidden;
+text-align:center;
+}
+
+/* màn hình */
+.screen{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+/* ẩn */
+.hidden{
+display:none;
+}
+
+/* chữ */
+h1{
+color:#ff4f8b;
+font-size:32px;
+}
+
+/* thỏ */
+.rabbit{
+font-size:120px;
+cursor:pointer;
+animation: jump 1.5s infinite;
+}
+
+@keyframes jump{
+0%{transform:translateY(0)}
+50%{transform:translateY(-20px)}
+100%{transform:translateY(0)}
+}
+
+/* bó hoa */
+.flower{
+font-size:120px;
+cursor:pointer;
+}
+
+/* thư */
+.letter{
+background:white;
+padding:30px;
+width:60%;
+max-width:500px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+animation: fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0;transform:scale(0.8)}
+to{opacity:1;transform:scale(1)}
+}
+
+/* bóng bay */
+
+.balloon{
+position:absolute;
+bottom:-100px;
+font-size:40px;
+animation: fly 10s linear infinite;
+}
+
+@keyframes fly{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
+}
+
+</style>
+</head>
+
+<body>
+<audio id="music" loop>
+<source src="ting.mp3" type="audio/mp3">
+</audio>
+<!-- màn hình 1 -->
+<div id="screen1" class="screen">
+<div class="rabbit" onclick="next1()">🐰</div>
+<h1>Nhấn vào đi</h1>
+</div>
+
+<!-- màn hình 2 -->
+<div id="screen2" class="screen hidden">
+<div class="flower" onclick="next2()">💐</div>
+<h1>Nhấn vào bó hoa</h1>
+</div>
+
+<!-- màn hình 3 -->
+<div id="screen3" class="screen hidden">
+<div class="letter">
+<h2>💌 Chúc mừng 8/3</h2>
+<p>
+Hí lu, dù không biết bạn là ai nhưng chúc bạn có một ngày 8/3 thật ý nghĩa và tràn đầy yêu thương. Mong bạn sẽ luôn xinh đẹp, dễ thương, rực rỡ như ánh mặt trời và luôn tươi tắn như những bó hoa, luôn gặp nhiều niềm vui và may mắn trong tương lai nhéee.
+</p>
+<p>🌷 Happy Women's Day 🌷</p>
+</div>
+</div>
+
+<script>
+
+function next1(){
+document.getElementById("screen1").classList.add("hidden");
+document.getElementById("screen2").classList.remove("hidden");
+
+document.getElementById("music").play();
+}
+function next2(){
+document.getElementById("screen2").classList.add("hidden");
+document.getElementById("screen3").classList.remove("hidden");
+}
+
+/* tạo bóng bay */
+
+for(let i=0;i<20;i++){
+let b=document.createElement("div");
+b.className="balloon";
+b.innerHTML="🎈";
+b.style.left=Math.random()*100+"%";
+b.style.animationDuration=6+Math.random()*6+"s";
+document.body.appendChild(b);
+}
+
+</script>
+
+</body>
+</html>
